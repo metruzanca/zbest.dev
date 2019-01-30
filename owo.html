@@ -1,0 +1,41 @@
+    <!DOCTYPE html>
+    <html>
+    <head>
+      <title>OwO Generator</title>
+      <meta charset="UTF-8">
+  </head>
+  <body>
+
+    <h1>Copy your desired owos to your hearts content</h1>
+    <div id="owos">
+
+    </div>
+
+    <script>
+        const owos = ['ÕwÕ','ÖwÖ','®w®','ÔwÔ','ðwð','ßwß','ØwØ'];
+        for (let i = 0; i < owos.length; i++) {
+            let button = document.createElement('button');
+            button.textContent = owos[i];
+            document.getElementById('owos').appendChild(button);
+            document.getElementById('owos').innerHTML+=' '
+        }
+
+        for( let button of document.getElementsByTagName('button')){
+            button.addEventListener("click", function() {
+                copyToClipboard(this.textContent);
+                console.log(`Copied: ${this.textContent}`)
+            });
+        }
+
+        function copyToClipboard(str) {
+            const element = document.createElement('textarea');
+            element.value = str;
+            document.body.appendChild(element);
+            element.select();
+            document.execCommand('copy');
+            document.body.removeChild(element);
+        };
+
+    </script>
+</body>
+</html>
