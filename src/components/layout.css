@@ -620,3 +620,20 @@ pre tt:after {
     font-size: 100%;
   }
 }
+
+
+
+
+
+body{
+  background-color: #211E31;
+  color: white;
+}
+
+a:visited {
+  color: #8D77FF;
+}
+
+a {
+  color: rgb(104, 131, 253);
+}
