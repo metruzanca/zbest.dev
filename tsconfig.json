@@ -19,10 +19,10 @@
       "webworker",
       "es2017"
     ],
-    "baseUrl": "src",
+    "baseUrl": "./src",
     "paths": {
-      "app/*": [
-        "./app/*"
+      "*": [
+        "*"
       ]
     }
   },
