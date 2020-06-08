@@ -8,6 +8,12 @@ export type Theme = {
   fgLinkVisited:string;
 }
 
+/**
+ * orange dark: #FD9B6E
+ * orange light: #FEC171
+ * purple: #5F56E5
+ */
+
 const darkTheme:Theme = {
   themeName:"dark",
   bgPrimary:"#211e31",
@@ -34,26 +40,18 @@ export const Themes = {
 }
 
 export function getLocalTheme(){
-  const savedTheme = localStorage().getItem('theme');
-  switch (savedTheme) {
-    default:
-    case "dark": return Themes.dark;
-    case "light": return Themes.light;
-  }
+  // if(typeof window !== 'undefined'){
+  //   const savedTheme = window.localStorage.getItem('theme');
+    switch (window.localStorage.getItem('theme')) {
+      default:
+      case "dark": return Themes.dark;
+      case "light": return Themes.light;
+    }
+  // }
 }
 
 export function setLocalTheme(theme:Theme){
-  localStorage().setItem('theme', theme.themeName);
-
-}
-
-function localStorage(){
   if(typeof window !== 'undefined'){
-    return window.localStorage;
-  }
-  // To satisfy the gatsby compilation step
-  return {
-    getItem:(key: string)=>'dark',
-    setItem:(key: string, value: string)=>{}
+    window.localStorage.setItem('theme', theme.themeName);
   }
 }

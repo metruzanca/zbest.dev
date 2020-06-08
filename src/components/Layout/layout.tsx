@@ -5,14 +5,15 @@
  * See: https://www.gatsbyjs.org/docs/use-static-query/
  */
 
-import React, { useState } from "react"
+import React, { useState, useEffect } from "react"
 import { useStaticQuery, graphql } from "gatsby"
 import { Global, css } from "@emotion/core"
 
 import { Header } from 'components'
 import "./layout.css"
 import { ThemeContext } from "contexts"
-import { getLocalTheme, Theme, setLocalTheme } from "utils"
+import { getLocalTheme, Theme, setLocalTheme, Themes } from "utils"
+import { FadeIn } from "components/FadeIn"
 
 export const Layout:React.FC = ({ children }) => {
 
@@ -26,15 +27,30 @@ export const Layout:React.FC = ({ children }) => {
     }
   `)
 
-  const [theme, _setTheme] = useState(getLocalTheme())
+  const [theme, _setTheme] = useState(Themes.dark)
+
+  // useEffect(() => {
+  //   if()
+  //   _setTheme(getLocalTheme());
+  // }, [])
 
   const setTheme = (theme:Theme) => {
     _setTheme(theme);
     setLocalTheme(theme);
   }
 
+  const [loaded, setLoaded] = useState(false)
+
+  useEffect(() => {
+    _setTheme(getLocalTheme());
+    setLoaded(!loaded);
+    // setTimeout(() => {
+    // },1000);
+  }, [])
+
   return (
     <ThemeContext.Provider value={{theme, setTheme}}>
+      <FadeIn loaded={loaded}/>
       <Global
         styles={css`
         body{

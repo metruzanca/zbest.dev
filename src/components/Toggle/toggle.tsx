@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 
 import styled from "@emotion/styled";
+import { getLocalTheme } from 'utils';
 
 interface ToggleProps{
   onClick:(state:boolean)=>void;
@@ -48,11 +49,22 @@ const StyledSpan = styled.span`
     left: 4px;
     bottom: 4px;
     background-color: white;
-    -webkit-transition: .4s;
-    transition: .4s;
+    -webkit-transition: .2s;
+    transition: .2s;
     border-radius: 50%;
   }
 `;
+
+
+//TODO
+// const slider = styled(StyledSpan)`
+//   ${checked => ``}
+// `;
+
+function debugTime(){
+  const t = new Date();
+  return `${t.getHours()}:${t.getMinutes()}:${t.getSeconds()} => `;
+}
 
 //REFACTOR
 export const Toggle : React.FC<ToggleProps> = ({
@@ -63,29 +75,36 @@ export const Toggle : React.FC<ToggleProps> = ({
   },
   toggled
 }) => {
+  
   const [checked, setChecked] = useState(toggled)
-  console.log(checked)
+  
+  const handleClick = () => {
+    setChecked(!checked);
+    onClick(!checked);
+  }  
 
   useEffect(() => {
     setChecked(toggled);
   }, [toggled])
 
-  const handleClick = () => {
-    setChecked(!checked);
-    onClick(!checked);
+  function getStyle(checked:boolean){
+    return checked ? {
+      '&:before':{
+        transform:"translateX(26px)",
+      },
+      backgroundColor: colors.toggleOn,
+    } : {
+      backgroundColor: colors.toggleOff
+    }
   }
-
+  
+  console.log(debugTime() + checked)
+  console.log(getStyle(checked));
+  
   return(
     <Wrapper>
       <StyledInput checked={checked} type="checkbox"/>
-      <StyledSpan onClick={handleClick} css={checked ? {
-        '&:before':{
-          transform:"translateX(26px)",
-        },
-        backgroundColor: colors.toggleOn,
-      } : {
-        backgroundColor: colors.toggleOff
-      }}/>
+      <StyledSpan onClick={handleClick} css={getStyle(checked)}/>
     </Wrapper>
   )
 }

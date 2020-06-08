@@ -629,3 +629,7 @@ a:visited {
 a {
   color: #6883fd
 }
+
+body{
+  animation: forwards;
+}
