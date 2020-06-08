@@ -6,13 +6,13 @@
  */
 
 import React from "react"
-import PropTypes from "prop-types"
 import { useStaticQuery, graphql } from "gatsby"
+// import { Global, css } from "@emotion/core"
 
-import Header from "./header"
+import { Header } from 'components'
 import "./layout.css"
 
-const Layout = ({ children }) => {
+export const Layout:React.FC = ({ children }) => {
   const data = useStaticQuery(graphql`
     query SiteTitleQuery {
       site {
@@ -25,6 +25,11 @@ const Layout = ({ children }) => {
 
   return (
     <>
+      {/* <Global
+        styles={css`
+          
+        `}
+      /> */}
       <Header siteTitle={data.site.siteMetadata.title} />
       <div
         style={{
@@ -43,9 +48,3 @@ const Layout = ({ children }) => {
     </>
   )
 }
-
-Layout.propTypes = {
-  children: PropTypes.node.isRequired,
-}
-
-export default Layout

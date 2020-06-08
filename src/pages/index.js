@@ -1,13 +1,11 @@
 import React from "react"
 import { Link } from "gatsby"
 
-import Layout from "../components/layout"
-import Image from "../components/image"
-import SEO from "../components/seo"
+import { Layout, Image, SEO, Toggle } from "components"
 
 const IndexPage = () => (
   <Layout>
-    <SEO title="Home" />
+    {/* <SEO title="Home" /> */}
     <h1>Hello, I'm Samuele Zanca</h1>
     <p>Web portfolio coming soon</p>
     <p>

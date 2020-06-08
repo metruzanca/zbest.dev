@@ -1,8 +1,12 @@
-import { Link } from "gatsby"
-import PropTypes from "prop-types"
 import React from "react"
+import { Link } from "gatsby"
+import { Toggle } from 'components';
 
-const Header = ({ siteTitle }) => (
+interface HeaderProps{
+  siteTitle?: string;
+}
+
+export const Header:React.FC<HeaderProps> = ({ siteTitle }) => (
   <header
     style={{
       background: `#342f52`, 
@@ -28,15 +32,7 @@ const Header = ({ siteTitle }) => (
         </Link>
       </h1>
     </div>
+    {/* <Toggle/> */}
   </header>
 )
 
-Header.propTypes = {
-  siteTitle: PropTypes.string,
-}
-
-Header.defaultProps = {
-  siteTitle: ``,
-}
-
-export default Header
