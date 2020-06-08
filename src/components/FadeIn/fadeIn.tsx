@@ -1,30 +1,33 @@
-import React, {  } from 'react';
+import React, { useEffect, useContext, useState } from 'react';
 import './fadeIn.css';
 // import Img from "gatsby-image"
 // import { useStaticQuery, graphql } from "gatsby"
 //@ts-ignore
 import code from 'images/code.svg';
+import { getLocalTheme } from 'utils';
+import { ThemeContext } from 'contexts';
+import initialLoad from 'utils/initialLoad';
 
 
-interface FadeInProps {
-  loaded:boolean;
-}
+interface FadeInProps {}
 
-export const FadeIn: React.FC<FadeInProps> = ({
-  loaded
-}) => {
+export const FadeIn: React.FC<FadeInProps> = () => {
 
-  // const data = useStaticQuery(graphql`
-  //   query {
-  //     placeholderImage: file(relativePath: { eq: "Code.png" }) {
-  //       childImageSharp {
-  //         fluid(maxWidth: 300) {
-  //           ...GatsbyImageSharpFluid
-  //         }
-  //       }
-  //     }
-  //   }
-  // `)
+  const { setTheme, theme } = useContext(ThemeContext);
+  const [isInitialLoad, initialLoadComplete] = initialLoad()
+  const [loaded, setLoaded] = useState(isInitialLoad);
+
+  useEffect(() => {
+    if(isInitialLoad){
+
+    }
+  }, [])
+
+
+  useEffect(() => {
+    setTheme(getLocalTheme());
+    setLoaded(!loaded);
+  }, [])
 
   return(
     <div className={loaded ? 'loading loaded' : 'loading'}>

@@ -5,4 +5,6 @@ import { Themes, Theme } from "utils";
 export const ThemeContext = createContext({
   theme: Themes.dark,
   setTheme: (theme:Theme) => {},
+  loaded:false,
+  setLoaded: (loaded:boolean) => {}
 });

@@ -98,9 +98,6 @@ export const Toggle : React.FC<ToggleProps> = ({
     }
   }
   
-  console.log(debugTime() + checked)
-  console.log(getStyle(checked));
-  
   return(
     <Wrapper>
       <StyledInput checked={checked} type="checkbox"/>

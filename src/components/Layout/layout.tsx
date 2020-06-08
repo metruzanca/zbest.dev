@@ -14,6 +14,7 @@ import "./layout.css"
 import { ThemeContext } from "contexts"
 import { getLocalTheme, Theme, setLocalTheme, Themes } from "utils"
 import { FadeIn } from "components/FadeIn"
+import initialLoad from "utils/initialLoad"
 
 export const Layout:React.FC = ({ children }) => {
 
@@ -28,6 +29,7 @@ export const Layout:React.FC = ({ children }) => {
   `)
 
   const [theme, _setTheme] = useState(Themes.dark)
+  const [loaded, setLoaded] = initialLoad();
 
   // useEffect(() => {
   //   if()
@@ -39,34 +41,24 @@ export const Layout:React.FC = ({ children }) => {
     setLocalTheme(theme);
   }
 
-  const [loaded, setLoaded] = useState(false)
-
-  useEffect(() => {
-    _setTheme(getLocalTheme());
-    setLoaded(!loaded);
-    // setTimeout(() => {
-    // },1000);
-  }, [])
 
   return (
-    <ThemeContext.Provider value={{theme, setTheme}}>
-      <FadeIn loaded={loaded}/>
-      <Global
-        styles={css`
+    <ThemeContext.Provider value={{theme, setTheme, loaded, setLoaded}}>
+      
+      <FadeIn/>
+      <Global styles={css`
         body{
           background-color: ${theme.bgPrimary};
           color: ${theme.fgPrimary};
         }
-        `}
-      />
+      `}/>
+
       <Header siteTitle={data.site.siteMetadata.title} />
-      <div
-        style={{
-          margin: `0 auto`,
-          maxWidth: 960,
-          padding: `0 1.0875rem 1.45rem`,
-        }}
-      >
+      <div style={{
+        margin: `0 auto`,
+        maxWidth: 960,
+        padding: `0 1.0875rem 1.45rem`,
+      }}>
         <main>{children}</main>
         <footer>
           © {new Date().getFullYear()}, Built with
