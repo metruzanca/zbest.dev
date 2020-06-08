@@ -1,9 +1,14 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
 import styled from "@emotion/styled";
 
 interface ToggleProps{
-  
+  onClick:(state:boolean)=>void;
+  colors?:{
+    toggleOff:string;
+    toggleOn:string;
+  },
+  toggled:boolean;
 }
 
 const Wrapper = styled.div`
@@ -49,19 +54,38 @@ const StyledSpan = styled.span`
   }
 `;
 
-export const Toggle : React.FC<ToggleProps> = ({}) => {
-  
-  const [checked, setChecked] = useState(false)
+//REFACTOR
+export const Toggle : React.FC<ToggleProps> = ({
+  onClick,
+  colors = {
+    toggleOff: "#FF002A",
+    toggleOn: "#1BF0FE",
+  },
+  toggled
+}) => {
+  const [checked, setChecked] = useState(toggled)
+  console.log(checked)
+
+  useEffect(() => {
+    setChecked(toggled);
+  }, [toggled])
+
+  const handleClick = () => {
+    setChecked(!checked);
+    onClick(!checked);
+  }
 
   return(
     <Wrapper>
       <StyledInput checked={checked} type="checkbox"/>
-      <StyledSpan onClick={() => setChecked(!checked)} css={checked ? {
+      <StyledSpan onClick={handleClick} css={checked ? {
         '&:before':{
           transform:"translateX(26px)",
         },
-        backgroundColor: "#2196F3",
-      } : null}/>
+        backgroundColor: colors.toggleOn,
+      } : {
+        backgroundColor: colors.toggleOff
+      }}/>
     </Wrapper>
   )
 }
