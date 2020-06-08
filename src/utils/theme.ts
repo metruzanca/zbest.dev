@@ -34,7 +34,7 @@ export const Themes = {
 }
 
 export function getLocalTheme(){
-  const savedTheme = localStorage.getItem('theme');
+  const savedTheme = localStorage().getItem('theme');
   switch (savedTheme) {
     default:
     case "dark": return Themes.dark;
@@ -43,6 +43,17 @@ export function getLocalTheme(){
 }
 
 export function setLocalTheme(theme:Theme){
-  localStorage.setItem('theme', theme.themeName);
+  localStorage().setItem('theme', theme.themeName);
 
+}
+
+function localStorage(){
+  if(typeof window !== 'undefined'){
+    return window.localStorage;
+  }
+  // To satisfy the gatsby compilation step
+  return {
+    getItem:(key: string)=>'dark',
+    setItem:(key: string, value: string)=>{}
+  }
 }
