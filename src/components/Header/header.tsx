@@ -45,13 +45,12 @@ export const Header:React.FC<HeaderProps> = ({ siteTitle }) => {
             {siteTitle}
           </Link>
         </h1>
-        <div style={{position:'absolute', right:0, marginRight:30}}>
+        <div style={{position:'absolute', right:0, marginRight:50}}>
           <Toggle
             toggled={dark}
             onClick={handleClick}
             colors={{toggleOff:"#feac73", toggleOn:"#8d77ff"}}
           />
-          <span style={{color:'white'}}> Theme WIP</span>
         </div>
       </div>
     </header>
