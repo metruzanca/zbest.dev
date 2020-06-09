@@ -1,14 +1,14 @@
-import React, { useState, useEffect } from 'react';
-
+import React, { useState, useEffect, useContext } from 'react';
 import styled from "@emotion/styled";
-import { getLocalTheme } from 'utils';
+
+import { ThemeContext } from 'contexts';
 
 interface ToggleProps{
   onClick:(state:boolean)=>void;
   colors?:{
     toggleOff:string;
     toggleOn:string;
-  },
+  }
   toggled:boolean;
 }
 
@@ -53,12 +53,6 @@ const StyledSpan = styled.span`
   }
 `;
 
-
-//TODO
-// const slider = styled(StyledSpan)`
-//   ${checked => ``}
-// `;
-
 function debugTime(){
   const t = new Date();
   return `${t.getHours()}:${t.getMinutes()}:${t.getSeconds()} => `;
@@ -73,17 +67,16 @@ export const Toggle : React.FC<ToggleProps> = ({
   },
   toggled
 }) => {
-  
   const [checked, setChecked] = useState(toggled)
   
+  useEffect(()=>{
+    setChecked(toggled);
+  },[toggled])
+
   const handleClick = () => {
     setChecked(!checked);
     onClick(!checked);
-  }  
-
-  useEffect(() => {
-    setChecked(toggled);
-  }, [toggled])
+  }
 
   function getStyle(checked:boolean){
     return checked ? {
@@ -98,7 +91,7 @@ export const Toggle : React.FC<ToggleProps> = ({
   
   return(
     <Wrapper>
-      {/* TODO Fix this crappy component */}
+      {/* TODO Fix this dumpster fire of a component */}
       {/* <StyledInput checked={checked} type="checkbox"/> */}
       <StyledSpan onClick={handleClick} css={getStyle(checked)}/>
     </Wrapper>

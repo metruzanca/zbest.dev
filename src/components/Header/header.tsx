@@ -1,4 +1,4 @@
-import React, { useContext } from "react"
+import React, { useContext, useEffect, useState} from "react"
 import { Link } from "gatsby"
 import { Toggle } from 'components';
 import { Themes } from "utils";
@@ -10,10 +10,12 @@ interface HeaderProps{
 
 export const Header:React.FC<HeaderProps> = ({ siteTitle }) => {
 
-  const {theme, setTheme} = useContext(ThemeContext)
-  
+  const { dark, toggleDark } = useContext(ThemeContext)
+
+  const theme = dark ? Themes.dark : Themes.light
+
   const handleClick = (state:boolean) => {
-    setTheme(state ? Themes.dark : Themes.light)
+    toggleDark(state);
   }
 
   return (
@@ -44,7 +46,11 @@ export const Header:React.FC<HeaderProps> = ({ siteTitle }) => {
           </Link>
         </h1>
         <div style={{position:'absolute', right:0, marginRight:30}}>
-          <Toggle toggled={theme.themeName == "dark" ? true : false} onClick={handleClick} colors={{toggleOff:"#feac73", toggleOn:"#8d77ff"}}/>
+          <Toggle
+            toggled={dark}
+            onClick={handleClick}
+            colors={{toggleOff:"#feac73", toggleOn:"#8d77ff"}}
+          />
           <span style={{color:'white'}}> Theme WIP</span>
         </div>
       </div>

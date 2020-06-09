@@ -12,6 +12,7 @@
     "noImplicitReturns": true,
     "strict": true,
     "outDir": "build",
+    "allowJs": true,
     "lib": [
       "es6",
       "es7",

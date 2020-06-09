@@ -39,34 +39,34 @@ export const Themes = {
   light:lightTheme
 }
 
-export function getLocalTheme(){
-  if(typeof window !== 'undefined'){
-    switch (window.localStorage.getItem('theme')) {
-      default:
-      case "dark": return Themes.dark;
-      case "light": return Themes.light;
-    }
-  }
-  return Themes.dark;
-}
+// export function getLocalTheme(){
+//   if(typeof window !== 'undefined'){
+//     switch (window.localStorage.getItem('theme')) {
+//       default:
+//       case "dark": return Themes.dark;
+//       case "light": return Themes.light;
+//     }
+//   }
+//   return Themes.dark;
+// }
 
-export function setLocalTheme(theme:Theme){
-  if(typeof window !== 'undefined'){
-    window.localStorage.setItem('theme', theme.themeName);
-  }
-}
+// export function setLocalTheme(theme:Theme){
+//   if(typeof window !== 'undefined'){
+//     window.localStorage.setItem('theme', theme.themeName);
+//   }
+// }
 
-export function themeLoaded() {
-  if(typeof window !== 'undefined'){
-    //@ts-ignore
-    window['firstRender'] = true;
-  }
-}
+// export function themeLoaded() {
+//   if(typeof window !== 'undefined'){
+//     //@ts-ignore
+//     window['firstRender'] = true;
+//   }
+// }
 
-export function didThemeLoad() {
-  if(typeof window !== 'undefined'){
-    //@ts-ignore
-    return window['firstRender'] == true
-  }
-  return false;
-}
+// export function didThemeLoad() {
+//   if(typeof window !== 'undefined'){
+//     //@ts-ignore
+//     return window['firstRender'] == true
+//   }
+//   return false;
+// }

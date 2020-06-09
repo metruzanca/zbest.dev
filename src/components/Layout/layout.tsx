@@ -5,14 +5,14 @@
  * See: https://www.gatsbyjs.org/docs/use-static-query/
  */
 
-import React, { useState, useEffect } from "react"
+import React, { useContext } from "react"
 import { useStaticQuery, graphql } from "gatsby"
 import { Global, css } from "@emotion/core"
 
 import { Header } from 'components'
 import "./layout.css"
 import { ThemeContext } from "contexts"
-import { getLocalTheme, Theme, setLocalTheme, Themes, themeLoaded } from "utils"
+import { Themes } from "utils"
 import { FadeIn } from "components/FadeIn"
 
 export const Layout:React.FC = ({ children }) => {
@@ -27,24 +27,13 @@ export const Layout:React.FC = ({ children }) => {
     }
   `)
 
-  const [theme, _setTheme] = useState(Themes.dark)
+  const { dark } = useContext(ThemeContext)
 
-  useEffect(() => {
-    console.log(`Changed theme to ${theme.themeName}`)
-  }, [theme])
-
-  const setTheme = (theme:Theme) => {
-    _setTheme(theme);
-    setLocalTheme(theme);
-    themeLoaded();
-    console.group("ThemeProvider");
-    console.trace();
-    console.groupEnd();
-  }
+  const theme = dark ? Themes.dark : Themes.light
 
   return (
-    <ThemeContext.Provider value={{theme, setTheme}}>
-      <FadeIn/>
+    <>
+      {/* <FadeIn/> */}
       <Global styles={css`
         body{
           background-color: ${theme.bgPrimary};
@@ -65,6 +54,6 @@ export const Layout:React.FC = ({ children }) => {
           <a href="https://www.gatsbyjs.org">Gatsby</a>
         </footer>
       </div>
-    </ThemeContext.Provider>
+      </>
   )
 }
