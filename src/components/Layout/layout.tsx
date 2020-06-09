@@ -14,7 +14,6 @@ import "./layout.css"
 import { ThemeContext } from "contexts"
 import { getLocalTheme, Theme, setLocalTheme, Themes, themeLoaded } from "utils"
 import { FadeIn } from "components/FadeIn"
-import initialLoad from "utils/initialLoad"
 
 export const Layout:React.FC = ({ children }) => {
 
@@ -30,15 +29,21 @@ export const Layout:React.FC = ({ children }) => {
 
   const [theme, _setTheme] = useState(Themes.dark)
 
+  useEffect(() => {
+    console.log(`Changed theme to ${theme.themeName}`)
+  }, [theme])
+
   const setTheme = (theme:Theme) => {
     _setTheme(theme);
     setLocalTheme(theme);
     themeLoaded();
+    console.group("ThemeProvider");
+    console.trace();
+    console.groupEnd();
   }
 
   return (
     <ThemeContext.Provider value={{theme, setTheme}}>
-      
       <FadeIn/>
       <Global styles={css`
         body{

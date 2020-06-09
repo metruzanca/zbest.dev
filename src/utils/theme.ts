@@ -40,14 +40,14 @@ export const Themes = {
 }
 
 export function getLocalTheme(){
-  // if(typeof window !== 'undefined'){
-  //   const savedTheme = window.localStorage.getItem('theme');
+  if(typeof window !== 'undefined'){
     switch (window.localStorage.getItem('theme')) {
       default:
       case "dark": return Themes.dark;
       case "light": return Themes.light;
     }
-  // }
+  }
+  return Themes.dark;
 }
 
 export function setLocalTheme(theme:Theme){
@@ -57,11 +57,16 @@ export function setLocalTheme(theme:Theme){
 }
 
 export function themeLoaded() {
-  //@ts-ignore
-  window['firstRender'] = true;
+  if(typeof window !== 'undefined'){
+    //@ts-ignore
+    window['firstRender'] = true;
+  }
 }
 
 export function didThemeLoad() {
-  //@ts-ignore
-  return window['firstRender'] == true
+  if(typeof window !== 'undefined'){
+    //@ts-ignore
+    return window['firstRender'] == true
+  }
+  return false;
 }

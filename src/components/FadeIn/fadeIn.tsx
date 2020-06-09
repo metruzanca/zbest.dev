@@ -16,7 +16,9 @@ export const FadeIn: React.FC<FadeInProps> = () => {
   useEffect(() => {
     setTimeout(()=>{
       if (!didThemeLoad()) {
-        setTheme(getLocalTheme());
+        const theme = getLocalTheme()
+        setTheme(theme);
+        console.log(`Got ${theme.themeName} from localstorage`)
       }
     })
   }, [])
@@ -25,5 +27,5 @@ export const FadeIn: React.FC<FadeInProps> = () => {
     <div className="loading loaded">
       <img src={code}/>
     </div>
-  )); 
+  ));
 }

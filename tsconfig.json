@@ -26,9 +26,6 @@
       ]
     }
   },
-  "include": [
-    "src/custom.d.ts"
-  ],
   "exclude": [
     "build",
     "node_modules"
