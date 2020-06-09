@@ -1,0 +1,16 @@
+
+@baseURL = https://api.github.com
+@user = metruzanca
+@repo = zcomponents
+
+### Test API Connection
+GET https://api.github.com/zen
+
+### Get user profile
+GET {{baseURL}}/users/{{user}}
+
+### Get repository
+GET {{baseURL}}/repos/{{user}}/{{repo}}
+
+### Get repository Readme
+GET https://raw.githubusercontent.com/{{user}}/{{repo}}/master/README.md
