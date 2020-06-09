@@ -19,8 +19,6 @@ const Wrapper = styled.div`
   height: 34px;
 `;
 
-
-
 const StyledInput = styled.input`
   opacity: 0;
   width: 0;
@@ -100,7 +98,8 @@ export const Toggle : React.FC<ToggleProps> = ({
   
   return(
     <Wrapper>
-      <StyledInput checked={checked} type="checkbox"/>
+      {/* TODO Fix this crappy component */}
+      {/* <StyledInput checked={checked} type="checkbox"/> */}
       <StyledSpan onClick={handleClick} css={getStyle(checked)}/>
     </Wrapper>
   )

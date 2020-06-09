@@ -12,7 +12,7 @@ import { Global, css } from "@emotion/core"
 import { Header } from 'components'
 import "./layout.css"
 import { ThemeContext } from "contexts"
-import { getLocalTheme, Theme, setLocalTheme, Themes } from "utils"
+import { getLocalTheme, Theme, setLocalTheme, Themes, themeLoaded } from "utils"
 import { FadeIn } from "components/FadeIn"
 import initialLoad from "utils/initialLoad"
 
@@ -29,21 +29,15 @@ export const Layout:React.FC = ({ children }) => {
   `)
 
   const [theme, _setTheme] = useState(Themes.dark)
-  const [loaded, setLoaded] = initialLoad();
-
-  // useEffect(() => {
-  //   if()
-  //   _setTheme(getLocalTheme());
-  // }, [])
 
   const setTheme = (theme:Theme) => {
     _setTheme(theme);
     setLocalTheme(theme);
+    themeLoaded();
   }
 
-
   return (
-    <ThemeContext.Provider value={{theme, setTheme, loaded, setLoaded}}>
+    <ThemeContext.Provider value={{theme, setTheme}}>
       
       <FadeIn/>
       <Global styles={css`

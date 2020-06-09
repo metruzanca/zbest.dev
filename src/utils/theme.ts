@@ -55,3 +55,13 @@ export function setLocalTheme(theme:Theme){
     window.localStorage.setItem('theme', theme.themeName);
   }
 }
+
+export function themeLoaded() {
+  //@ts-ignore
+  window['firstRender'] = true;
+}
+
+export function didThemeLoad() {
+  //@ts-ignore
+  return window['firstRender'] == true
+}
