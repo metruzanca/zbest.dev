@@ -12,10 +12,15 @@ export const FadeIn: React.FC<FadeInProps> = () => {
 
   const { toggleDark, dark, isLoading } = useContext(ThemeContext);
 
-  return (true ? (
-    <div className="loading">
+  const [className, setClassName] = useState('loading')
+
+  useEffect(() => {
+    setClassName(className + " loaded")
+  }, [isLoading])
+
+  return (
+    <div className={className}>
       <img src={code}/>
     </div>
-  ) : null
   );
 }

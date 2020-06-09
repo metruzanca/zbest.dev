@@ -13,7 +13,6 @@ import { Header } from 'components'
 import "./layout.css"
 import { ThemeContext } from "contexts"
 import { Themes } from "utils"
-import { FadeIn } from "components/FadeIn"
 
 export const Layout:React.FC = ({ children }) => {
 
@@ -33,7 +32,6 @@ export const Layout:React.FC = ({ children }) => {
 
   return (
     <>
-      {/* <FadeIn/> */}
       <Global styles={css`
         body{
           background-color: ${theme.bgPrimary};
