@@ -6,7 +6,7 @@ import { FadeIn } from "components/FadeIn"
 
 export const wrapRootElement = ({ element }) => (
   <ThemeProvider>
-    {/* <FadeIn/> */}
+    <FadeIn/>
     {element}
   </ThemeProvider>
 )
