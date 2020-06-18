@@ -1,0 +1,56 @@
+==================================================================
+https://keybase.io/metruzanca
+--------------------------------------------------------------------
+
+I hereby claim:
+
+  * I am an admin of https://Zbest.dev
+  * I am metruzanca (https://keybase.io/metruzanca) on keybase.
+  * I have a public key ASBFmlVYCYF5Q2bVI217iWIuHrZl7Tf7QBsMXxBeuvAq4go
+
+To do so, I am signing this object:
+
+{
+  "body": {
+    "key": {
+      "eldest_kid": "0120459a55580981794366d5236d7b89622e1eb665ed37fb401b0c5f105ebaf02ae20a",
+      "host": "keybase.io",
+      "kid": "0120459a55580981794366d5236d7b89622e1eb665ed37fb401b0c5f105ebaf02ae20a",
+      "uid": "89599d50f8e3f9aaf6e85d6b22283819",
+      "username": "metruzanca"
+    },
+    "merkle_root": {
+      "ctime": 1592495723,
+      "hash": "2ab218eece03dfba3a615895748ad50cfeaae4daac44d6eb04703e1fd8c44ff40de0cd43973d4287d1a93e3df1a0323b8046a7c8b974d87e506e6b2bca621680",
+      "hash_meta": "4c798bcf18bcd3a4d750f71a139cdb2f64b55fe627dc13ae75b6e62c181eef38",
+      "seqno": 16707094
+    },
+    "service": {
+      "entropy": "jsc2UyD0wWtje0JyVDROAguY",
+      "hostname": "Zbest.dev",
+      "protocol": "https:"
+    },
+    "type": "web_service_binding",
+    "version": 2
+  },
+  "client": {
+    "name": "keybase.io go client",
+    "version": "5.5.0"
+  },
+  "ctime": 1592495778,
+  "expire_in": 504576000,
+  "prev": "6abb5ef99d9eb0ee18c69ba687f31b8e2d60f44a0c403e63317e1dfc6c46e997",
+  "seqno": 13,
+  "tag": "signature"
+}
+
+which yields the signature:
+
+hKRib2R5hqhkZXRhY2hlZMOpaGFzaF90eXBlCqNrZXnEIwEgRZpVWAmBeUNm1SNte4liLh62Ze03+0AbDF8QXrrwKuIKp3BheWxvYWTESpcCDcQgarte+Z2esO4Yxpumh/Mbji1g9EoMQD5jMX4d/GxG6ZfEII+9IkpqNe1VwNfNoINozd9WV35v7AJ7FE9vi7gupkPkAgHCo3NpZ8RAYwZPko7GilfWr0omXQWXTBfQdcDlEHQsZc/DPKQBO/xObwnPq9WfFRJRJGzT5BRuzqBNO3WbkI6xsC90u7UaCKhzaWdfdHlwZSCkaGFzaIKkdHlwZQildmFsdWXEICZijx1yjN9PoBDf50Ze9Oxou8+WiZ1hL13j+11Gjn4yo3RhZ80CAqd2ZXJzaW9uAQ==
+
+And finally, I am proving ownership of this host by posting or
+appending to this document.
+
+View my publicly-auditable identity here: https://keybase.io/metruzanca
+
+==================================================================
