@@ -51,7 +51,6 @@ export const Header:React.FC<HeaderProps> = ({ siteTitle }) => {
             onClick={handleClick}
             colors={{toggleOff:"#feac73", toggleOn:"#8d77ff"}}
           />
-          <span style={{color:'white'}}> Theme WIP</span>
         </div>
       </div>
     </header>
