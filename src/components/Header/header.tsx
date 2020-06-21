@@ -22,7 +22,10 @@ export const Header:React.FC<HeaderProps> = ({ siteTitle }) => {
     <header
       style={{
         background: theme.bgHeader, 
-        marginBottom: `1.45rem`,
+        // marginBottom: `1.45rem`,
+        // position:'fixed',
+        // top:0,
+        // width:'100%',
       }}
     >
       <div
