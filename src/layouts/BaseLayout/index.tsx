@@ -47,7 +47,7 @@ export const BaseLayout: React.FC = ({ children }) => {
           color: ${theme.fgPrimary};
         }
       `} />
-      <BorderOverlay />
+      {/* <BorderOverlay /> */}
       {children}
       {/* <Header siteTitle={data.site.siteMetadata.title} />
       <Body>

@@ -1,15 +1,13 @@
 import React, { useState, useEffect, useContext } from 'react';
 import styled from "@emotion/styled";
 
-import { ThemeContext } from 'contexts';
-
-interface ToggleProps{
-  onClick:(state:boolean)=>void;
-  colors?:{
-    toggleOff:string;
-    toggleOn:string;
+interface ToggleProps {
+  onClick: (state: boolean) => void;
+  colors?: {
+    toggleOff: string;
+    toggleOn: string;
   }
-  toggled:boolean;
+  toggled: boolean;
 }
 
 const Wrapper = styled.div`
@@ -53,13 +51,8 @@ const StyledSpan = styled.span`
   }
 `;
 
-function debugTime(){
-  const t = new Date();
-  return `${t.getHours()}:${t.getMinutes()}:${t.getSeconds()} => `;
-}
-
 //REFACTOR
-export const Toggle : React.FC<ToggleProps> = ({
+export const Toggle: React.FC<ToggleProps> = ({
   onClick,
   colors = {
     toggleOff: "#FF002A",
@@ -67,33 +60,36 @@ export const Toggle : React.FC<ToggleProps> = ({
   },
   toggled
 }) => {
-  const [checked, setChecked] = useState(toggled)
-  
-  useEffect(()=>{
-    setChecked(toggled);
-  },[toggled])
+  const [theme, setTheme] = useState(toggled ? 'dark' : 'light')
+
+  useEffect(() => {
+    setTheme(toggled ? 'dark' : 'light');
+  }, [toggled])
+
+  const toggleTheme = () => theme === 'dark' ? 'light' : 'dark'
 
   const handleClick = () => {
-    setChecked(!checked);
-    onClick(!checked);
+    const theme = toggleTheme()
+    setTheme(theme)
+    onClick(theme);
   }
 
-  function getStyle(checked:boolean){
-    return checked ? {
-      '&:before':{
-        transform:"translateX(26px)",
+  function getStyle(theme: boolean) {
+    return theme === 'dark' ? {
+      '&:before': {
+        transform: "translateX(26px)",
       },
       backgroundColor: colors.toggleOn,
     } : {
-      backgroundColor: colors.toggleOff
-    }
+        backgroundColor: colors.toggleOff
+      }
   }
-  
-  return(
+
+  return (
     <Wrapper>
       {/* TODO Fix this dumpster fire of a component */}
       {/* <StyledInput checked={checked} type="checkbox"/> */}
-      <StyledSpan onClick={handleClick} css={getStyle(checked)}/>
+      <StyledSpan onClick={handleClick} css={getStyle(theme)} />
     </Wrapper>
   )
 }

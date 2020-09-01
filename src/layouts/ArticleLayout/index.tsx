@@ -23,7 +23,7 @@ const Body = styled.div`
   padding: 0 1.0875rem 1.45rem;
 `;
 
-export const ArticleLayout:React.FC = ({ children }) => {
+export const ArticleLayout: React.FC = ({ children }) => {
 
   const data = useStaticQuery(graphql`
     query SiteTitleQuery {
@@ -46,12 +46,12 @@ export const ArticleLayout:React.FC = ({ children }) => {
           background-color: ${theme.bgPrimary};
           color: ${theme.fgPrimary};
         }
-      `}/>
-      <BorderOverlay/>
+      `} />
+      {/* <BorderOverlay/> */}
       <Header siteTitle={data.site.siteMetadata.title} />
       <Body>
         <main>{children}</main>
-        <Footer/>
+        <Footer />
       </Body>
     </>
   )
