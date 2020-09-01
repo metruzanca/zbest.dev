@@ -1,8 +1,7 @@
 import React, { useState } from "react"
 import { Link } from "gatsby"
 
-import { Image, SEO, Hero } from "components"
-import { ArticleLayout } from "layouts"
+import { Image, SEO, Hero, Layout } from "components"
 
 const IndexPage: React.FC = ({
 
@@ -11,7 +10,7 @@ const IndexPage: React.FC = ({
 
 
   return (
-    <ArticleLayout>
+    <Layout>
       <SEO title="Home" />
       <h1>Hello, I'm Samuele Zanca</h1>
       <p>Web portfolio coming soon</p>
@@ -24,7 +23,7 @@ const IndexPage: React.FC = ({
       </div>
       <Link to="/page-2/">Go to page 2</Link> <br />
       <Link to="/using-typescript/">Go to "Using TypeScript"</Link>
-    </ArticleLayout>
+    </Layout>
   )
 }
 

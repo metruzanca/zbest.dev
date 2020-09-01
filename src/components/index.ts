@@ -1,5 +1,4 @@
 export * from './BorderOverlay';
-export * from './FadeIn';
 export * from './Footer';
 export * from './Header';
 export * from './Hero';
