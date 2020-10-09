@@ -11,7 +11,7 @@ import { Global, css } from "@emotion/core"
 
 import { Header, BorderOverlay, Footer } from 'components'
 import "./layout.css"
-import { ThemeContext } from "contexts"
+// import { ThemeContext } from "contexts"
 import { Themes } from "utils"
 
 
